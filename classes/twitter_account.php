@@ -10,37 +10,13 @@
 		}
 		
 		public static function create($options = array()) {
-			return new Tweet_Account($options);
+			return new Twitter_Account($options);
 		}
 		
 		public static function ago($timestamp){
-	    $difference = time() - $timestamp;
-	
-	    if($difference < 60)
-	        return $difference." seconds ago";
-	    else {
-        $difference = round($difference / 60);
-        
-        if($difference < 60)
-            return $difference." minutes ago";
-        else{
-          $difference = round($difference / 60);
-          
-          if($difference < 24)
-              return $difference." hours ago";
-          else{
-            $difference = round($difference / 24);
-            
-            if($difference < 7)
-                return $difference." days ago";
-            else{
-                $difference = round($difference / 7);
-                return $difference." weeks ago";
-            }
-          }
-        }
+	    	return date("m.d.y", $timestamp);
 	    }
-		}
+	
 	
 		public function get_tweets($options = array()) {
 			extract(array_merge(array(
